@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050505" />
+    <title>Bingo — Make your mark</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="screen welcome-screen" id="welcome-screen" aria-labelledby="welcome-title">
+        <div class="welcome-content">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> YOUR NEXT GAME STARTS HERE</span>
+          <h1 class="hero-mark" id="welcome-title" aria-label="Bingo">
+            <span>B</span><span>I</span><span>N</span><span>G</span><span>O</span>
+          </h1>
+          <form id="welcome-form" class="welcome-form">
+            <label for="player-name" class="sr-only">Your name</label>
+            <input id="player-name" name="playerName" type="text" maxlength="24" placeholder="Enter your name" autocomplete="given-name" required />
+            <button class="primary-button proceed-button" type="submit">Proceed</button>
+          </form>
+          <p class="welcome-footnote">A little luck. A lot of choices.</p>
+        </div>
+      </section>
+
+      <section class="screen game-screen hidden" id="game-screen" aria-labelledby="screen-title">
+        <header class="topbar">
+          <div class="brand" aria-label="Bingo">B<span>●</span></div>
+          <div class="topbar-right"><span class="topbar-label">PLAYER</span><span id="player-display"></span></div>
+        </header>
+
+        <div class="game-content">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow" id="phase-label">01 / SET YOUR BOARD</span>
+              <h2 id="screen-title" tabindex="-1">Make it yours.</h2>
+              <p id="phase-description">Tap each square to place numbers 1 through 25.</p>
+            </div>
+            <div class="count-badge" id="count-badge"><strong id="count-value">0</strong><span id="count-total">/ 25</span></div>
+          </div>
+
+          <div class="play-layout">
+            <div class="board-column">
+              <div class="board-head">
+                <div class="bingo-letters" id="bingo-letters" aria-label="Bingo progress">
+                  <span>B</span><span>I</span><span>N</span><span>G</span><span>O</span>
+                </div>
+                <span class="board-hint" id="board-hint">YOUR BOARD</span>
+                <button class="text-button board-clear-button" id="clear-button" type="button">Clear board</button>
+              </div>
+              <div class="board-wrap">
+                <div class="board" id="board" role="group" aria-label="Bingo board"></div>
+                <div class="win-overlay hidden" id="win-overlay" aria-hidden="true"><span>BINGO!</span></div>
+              </div>
+              <div class="board-actions" id="setup-actions">
+                <div class="setup-buttons">
+                  <button class="secondary-button" id="quick-fill-button" type="button">Quick fill</button>
+                  <button class="primary-button start-button" id="start-button" type="button" disabled>Start game</button>
+                </div>
+              </div>
+              <div class="board-actions hidden" id="play-actions">
+                <span class="play-tip" id="play-tip"><span class="tip-dot"></span> Select a number to make your mark</span>
+                <button class="secondary-button hidden" id="replay-button" type="button">Replay</button>
+                <button class="secondary-button hidden" id="pause-replay-button" type="button">Pause</button>
+                <button class="primary-button hidden" id="restart-button" type="button">Play again</button>
+              </div>
+            </div>
+
+            <aside class="side-panel" id="side-panel">
+              <div class="panel-topline"><span class="panel-icon" aria-hidden="true">✳</span><span id="panel-step">THE SETUP</span></div>
+              <h3 id="panel-title">Your board,<br />your rules.</h3>
+              <p id="panel-description">Choose where every number goes. Once all 25 squares are filled, you’re ready to play.</p>
+              <div class="panel-divider"></div>
+              <div class="tracker-heading"><span id="tracker-label">NUMBERS PLACED</span><strong id="tracker-count">00 / 25</strong></div>
+              <div class="number-tracker" id="number-tracker" aria-live="polite"><span class="tracker-empty">Your numbers will appear here.</span></div>
+              <div class="panel-bottom"><span class="panel-bottom-dot"></span><span id="panel-bottom-text">ONE SQUARE AT A TIME</span></div>
+            </aside>
+          </div>
+        </div>
+        <footer class="footer"><span>BINGO / 2026</span><span>FIVE LINES. ONE WIN.</span></footer>
+      </section>
+    </main>
+    <div class="sr-only" id="announcement" aria-live="assertive"></div>
+  </body>
+</html>
